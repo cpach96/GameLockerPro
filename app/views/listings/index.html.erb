@@ -1,0 +1,12 @@
+<h1> This will show all current listings for so users can browse. Possible filters on here for listings by platform, price, publisher? </h1>
+
+<%= @listings.each do |listing| %>
+
+    <%= listing.name %>
+    <%= listing.genre %>
+    <%= listing.price %>
+    <%= listing.platform %>
+    <%= listing.publisher %>
+<%end%>
+
+<h2>Will have a button which brings you to individual listing link </h2>

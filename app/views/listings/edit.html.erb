@@ -1,0 +1,19 @@
+<h1> user will only be able to update their own listings </h1>
+<%= form_for(@listing) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :genre %>
+    <%= f.text_field :genre %>
+
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+
+    <%= f.label :platform %>
+    <%= f.text_field :platform %>
+
+    <%= f.label :publisher %>
+    <%= f.text_field :publisher %>
+
+    <%= f.submit "Edit listing!" %>
+<%end%>
