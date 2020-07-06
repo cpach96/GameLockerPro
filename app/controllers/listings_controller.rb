@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
     before_action :set_listing, only: [:show, :edit, :update, :destroy]
+    before_action :authentication_required
     def index
         @listings = Listing.all
     end

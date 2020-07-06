@@ -24,8 +24,8 @@ class UsersController < ApplicationController
     end
 
     private
-    ## Required params to pass username and password as password_digest
+    ## Required params to pass username and password as password_confirmation
     def user_params
-        params.require(:user).permit(:username, :password_digest)
+        params.require(:user).permit(:username, :password, :password_confirmation)
     end
 end
