@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
-    before_action :set_listing, only: [:show, :edit, :update, :destroy]
-    before_action :authentication_required
+    
+    # before_action :set_listing, only: [:show, :edit, :update, :destroy]
+    # before_action :authentication_required
     def index
         @listings = Listing.all
     end
@@ -11,9 +12,13 @@ class ListingsController < ApplicationController
 
     def create
         @listing = Listing.new(listing_params)
+        if @listing.valid?
         @listing.save
         redirect_to listing_path(@listing)
 
+        else
+            render :new
+        end
     end
 
     def show
