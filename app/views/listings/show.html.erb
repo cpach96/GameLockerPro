@@ -1,11 +1,40 @@
 <h1> This will show individual listings like a ebay page </h1>
 
-
     <%=@listing.name %>
     <%=@listing.genre %>
     <%=@listing.price %>
     <%=@listing.platform %>
     <%=@listing.publisher %>
 
-<h2> Will have a button to add a new comment to the listing </h2>
 
+<h2> Comments </h2>
+
+<%= @listing.comments.each do |comment| %>
+    <%= comment.content %>
+ <%end%>
+<!--- can put comment form in here find param with a hidden key @listing.id -->
+
+<% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@comment.errors.count, "error") %>
+      prohibited this comment from being saved:
+    </h2>
+ 
+    <ul>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <%end%> <!-- WHY 2 ENDS MAKE THIS WORK???? -->
+
+
+<%= form_for(@comment) do |f| %>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :listing_id, value: @listing.id %>
+
+    <%= f.submit "Add Comment" %>
+<%end%>

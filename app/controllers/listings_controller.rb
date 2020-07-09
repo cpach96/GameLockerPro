@@ -14,6 +14,8 @@ class ListingsController < ApplicationController
         @listing = Listing.new(listing_params)
         if @listing.valid?
         @listing.save
+        current_user.listings << @listing
+        ##this works on creating the correct association!!!
         redirect_to listing_path(@listing)
 
         else
@@ -22,6 +24,9 @@ class ListingsController < ApplicationController
     end
 
     def show
+        #testing this
+        @comment = Comment.new
+        #testing this, this works but its out of scope of this class. comments should not be instanciated in listing class FIX THIS
         set_listing
     end
 
