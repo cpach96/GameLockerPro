@@ -1,5 +1,5 @@
 <h1>Hi, <%= current_user.username %> Welcome to your homepage you will see listings here soon hopefully lol</h1>
-<h2><%=current_user.listings.each do |listing| %>
+<h2><%current_user.listings.each do |listing| %>
     <%= listing.name %><br>
     <%= listing.genre %>
     <%= listing.price %>
@@ -9,3 +9,8 @@
 
 
 <%= link_to "Create a Listing", new_listing_path  %>
+<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+  <input type=submit value='logout'>
+<%end%>
+
+<!-- diregard this page this cant be a homepage because its out of scope of whatever the hell im doing -->

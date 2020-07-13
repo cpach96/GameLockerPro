@@ -3,11 +3,15 @@ class ListingsController < ApplicationController
     # before_action :set_listing, only: [:show, :edit, :update, :destroy]
     # before_action :authentication_required
     def index
-        @listings = Listing.all
-    end
+        if params[:user_id]
+            @listings = User.find(params[:user_id]).listings
+          else
+            @listings = Listing.all
+          end
+        end
 
     def new
-       @listing = Listing.new 
+       @listing = Listing.new
     end
 
     def create
@@ -42,7 +46,9 @@ class ListingsController < ApplicationController
 
     def destroy
         #will add delete button to edit page that will return you back to your homepage or listing index
+        set_listing
         @listing.destroy
+        redirect_to user_path(current_user)
     end
 
     private

@@ -8,11 +8,14 @@
 
 
 <h2> Comments </h2>
-
-<%= @listing.comments.each do |comment| %>
-    <%= comment.content %>
+<% @listing.comments.each do |comment| %>
+    <h3><%= comment.user.username %> <br></h3>
+    <%= comment.content %><br>
+    Posted at: <%= comment.post_time?%>
+    <!-- this bypassses content validation? need a way to show disregard invalid content. will make timestamp for comments as well as links on usernames to profiles  -->
  <%end%>
-<!--- can put comment form in here find param with a hidden key @listing.id -->
+ 
+
 
 <% if @comment.errors.any? %>
   <div id="error_explanation">
@@ -28,7 +31,6 @@
     </ul>
   </div>
   <%end%> <!-- WHY 2 ENDS MAKE THIS WORK???? -->
-
 
 <%= form_for(@comment) do |f| %>
     <%= f.label :content %>
