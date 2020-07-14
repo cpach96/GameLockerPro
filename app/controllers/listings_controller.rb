@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
     
-    # before_action :set_listing, only: [:show, :edit, :update, :destroy]
-    # before_action :authentication_required
+    before_action :require_login
+    
     def index
         if params[:user_id]
             @listings = User.find(params[:username]).listings

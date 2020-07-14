@@ -3,6 +3,7 @@ class Listing < ApplicationRecord
     # RELATIONSHIPS--------------------------
     has_many :comments
     has_many :users, through: :comments
+    
 
     #VALIDATIONS -----------------------------
     validates :name, presence: true
@@ -12,8 +13,8 @@ class Listing < ApplicationRecord
     validates :platform, presence: true
     validates :price, numericality: true
     
-
-
+    scope :nintendo, -> { where(publisher: 'nintendo') }
+   
   
 
 

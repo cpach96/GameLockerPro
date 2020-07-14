@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :require_login, only: [:show]
 
     def index
         
@@ -6,6 +7,8 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
+        render :layout => false
+
     end
 
     def create

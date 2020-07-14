@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
     def new
-        
+        render :layout => false
     end
 
     def create
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: params[:username])
         return head(:forbidden) unless @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect_to '/'
+        redirect_to user_path(current_user)
 
         else
         #This is the OmniAuth part that authorizes use of github 
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete :user_id
-        redirect_to login_path, :notice => "You are signed out!"
+        redirect_to login_path
     end
 
 end

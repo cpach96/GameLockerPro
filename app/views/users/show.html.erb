@@ -1,16 +1,10 @@
-<%= current_user.username %>
-
+<h1>Hi, <%= current_user.username %>!  Welcome to your homepage. Here are all your active listings</h1>
 <!-- this will be users profile? it will show current listings and other stuff -->
-<%= link_to "New Listing", new_user_listing_path(@user) %>
+
 
 <p> Listings </p>
     <% @user.listings.each do |listing| %>
-    <div><%= listing.name %> </div>
+    <div><%= link_to listing.name, listing_path(listing)%> <%= link_to "edit", edit_listing_path(listing)%> </div>
 <%end%>
 
 
-<footer>
-<%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-  <input type=submit value='logout'>
-  <%end%>
-  </footer>

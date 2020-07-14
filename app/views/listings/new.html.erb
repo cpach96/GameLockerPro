@@ -1,4 +1,4 @@
-<h1>This is where the user will create their listing. Will be reqd to be logged in to be here </h1>
+<h1>Create a new listing here!</h1>
 
 <% if @listing.errors.any? %>
   <div id="error_explanation">
@@ -31,6 +31,8 @@
 
     <%= f.label :publisher %>
     <%= f.text_field :publisher %>
+
+
 
 
     <%= f.submit "List it!" %>

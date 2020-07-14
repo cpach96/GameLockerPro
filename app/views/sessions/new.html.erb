@@ -1,4 +1,4 @@
-<h1>log in v1 </h1>
+<h1>Login!</h1>
 
 <%= form_tag(login_path) do %>
     <%= text_field_tag :username, '', :placeholder => "Username" %>
@@ -8,3 +8,5 @@
     <%= submit_tag "Sign In" %>
 <%end%>
 <%= link_to('Log in with GitHub!', '/auth/github') %>
+
+<footer><%= link_to("not a member? Sigm up here!", new_user_path)%></footer>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root 'application#home'
+  root 'sessions#new'
   #sets root to this page so localhost:3000/ brings you to the users index page like homepage
   resources :users
   resources :listings
