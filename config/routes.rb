@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do
     resources :listings, only: [:show, :index, :new]
   end
+  #fix nested resources
 
  
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  #get '/logout' => 'sessions#destroy' #fix this shouldnt be a get /logout
   post '/logout' => 'sessions#destroy'
 
-  get '/auth/facebook/callback' => 'sessions#create'
+  get "/auth/:provider/callback" => "sessions#create"
 end

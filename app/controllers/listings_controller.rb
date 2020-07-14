@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
     # before_action :authentication_required
     def index
         if params[:user_id]
-            @listings = User.find(params[:user_id]).listings
+            @listings = User.find(params[:username]).listings
           else
             @listings = Listing.all
           end
@@ -19,6 +19,7 @@ class ListingsController < ApplicationController
         if @listing.valid?
         @listing.save
         current_user.listings << @listing
+    
         ##this works on creating the correct association!!!
         redirect_to listing_path(@listing)
 

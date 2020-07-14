@@ -1,4 +1,6 @@
+<header>Currently logged in as <%=current_user.username%></header>
 <h1> This will show individual listings like a ebay page </h1>
+<h2> Created by <%= link_to @listing.users.first.username, user_path(@listing.users.first.id) %> </h2>
 
     <%=@listing.name %>
     <%=@listing.genre %>
@@ -12,7 +14,8 @@
     <h3><%= comment.user.username %> <br></h3>
     <%= comment.content %><br>
     Posted at: <%= comment.post_time?%>
-    <!-- this bypassses content validation? need a way to show disregard invalid content. will make timestamp for comments as well as links on usernames to profiles  -->
+   
+ 
  <%end%>
  
 

@@ -1,10 +1,10 @@
-<%= @user.username %>
+<%= current_user.username %>
 
 <!-- this will be users profile? it will show current listings and other stuff -->
 <%= link_to "New Listing", new_user_listing_path(@user) %>
 
 <p> Listings </p>
-    <%= @user.listings.each do |listing| %>
+    <% @user.listings.each do |listing| %>
     <div><%= listing.name %> </div>
 <%end%>
 

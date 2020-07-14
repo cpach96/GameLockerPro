@@ -10,7 +10,11 @@ class Listing < ApplicationRecord
     validates :price, presence: true
     validates :publisher, presence: true
     validates :platform, presence: true
-    #make validation where price must be integer 
+    validates :price, numericality: true
+    
+
+
+  
 
 
 end
