@@ -13,8 +13,18 @@ class Listing < ApplicationRecord
     validates :platform, presence: true
     validates :price, numericality: true
     
-    scope :nintendo, -> { where(publisher: 'nintendo') }
+    #CLASS SCOPE MEDTHOD finds the newest posted game. I then take the class method newest_listing to find the name of it.
+    scope :newest, -> { order(:created_at , :desc) }
+
+    #MODEL CLASS METHODS -------------------------
+
+    def self.newest_listing
+        Listing.newest.last.name
+    end
    
+    def created_by?
+        self.users.first.username
+    end
   
 
 

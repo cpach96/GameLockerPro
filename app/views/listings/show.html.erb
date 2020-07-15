@@ -1,6 +1,6 @@
 
 <h1> Weclome to the Marketplace! Browse all the games</h1>
-<h2> Created by <%= link_to @listing.users.first.username, user_path(@listing.users.first.id) %> </h2>
+<h2> Created by <%= link_to @listing.created_by?, user_path(@listing.users.first.id) %> </h2>
 
     <%=@listing.name %>
     <%=@listing.genre %>

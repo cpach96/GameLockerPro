@@ -1,5 +1,7 @@
 <h1> This will show all current listings for so users can browse. Possible filters on here for listings by platform, price, publisher? </h1>
 
+<h2>Showcase: Newest Site Addition <%= link_to Listing.newest_listing, listing_path(Listing.newest.last.id) %></h2>
+
 <% @listings.each do |listing| %>
 
     Listing Name: <%= link_to listing.name, listing_path(listing) %>
